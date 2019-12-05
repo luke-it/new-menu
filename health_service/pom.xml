@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>health_parent</artifactId>
+        <groupId>com.luke</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>health_service</artifactId>
+    <packaging>war</packaging>
+
+    <!--接口实现类需要用到接口和dao引入依赖-->
+ <dependencies>
+     <dependency>
+         <groupId>com.luke</groupId>
+         <artifactId>health_interface</artifactId>
+         <version>1.0-SNAPSHOT</version>
+     </dependency>
+
+     <dependency>
+         <groupId>com.luke</groupId>
+         <artifactId>health_dao</artifactId>
+         <version>1.0-SNAPSHOT</version>
+     </dependency>
+ </dependencies>
+    <!--服务的提供者,需要日志和tomcat插件-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定端口 -->
+                    <port>81</port>
+                    <!-- 请求路径 -->
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
